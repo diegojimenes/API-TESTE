@@ -15,9 +15,10 @@ mongoose.connect(
     console.log('não consegui conectar')
 })
 
-app.get('/', (req, res) => {
-    res.send('Hello World!')
-})
+app.use('/', (req, res, next) => {
+    console.log('chamada recebida')
+    next()
+}, require("./routes"))
 
 app.listen(port, host, () => {
     console.log(`Example app listening at http://localhost:${port}`)
