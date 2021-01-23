@@ -5,11 +5,21 @@
   "repository": "https://github.com/diegojimenes/API-TESTE.git",
   "license": "MIT",
   "scripts": {
-    "start": "nodemon index.js"
+    "start": "nodemon --exec babel-node index.js"
   },
   "dependencies": {
     "express": "^4.17.1",
     "mongoose": "^5.11.13",
     "nodemon": "^2.0.7"
-  }
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.12.10",
+    "@babel/core": "^7.12.10",
+    "@babel/node": "^7.12.10",
+    "@babel/preset-env": "^7.12.11"
+  },
+  "presets": [
+    "@babel/preset-env"
+  ],
+  "type": "module"
 }
