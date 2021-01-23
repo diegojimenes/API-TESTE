@@ -1,0 +1,21 @@
+version: "3"
+
+services:
+  db:
+    image: mongo:4.2
+    container_name: db
+    restart: always
+    ports:
+      - 27017:27017
+    environment:
+      MONGO_INITDB_DATABASE: APITESTE
+      MONGO_INITDB_ROOT_USERNAME: diego
+      MONGO_INITDB_ROOT_PASSWORD: senha
+  app:
+    build: .
+    depends_on: [db]
+    command: npm start
+    ports: 
+      - "3000:3000"
+    volumes:
+      - .:/usr/app
