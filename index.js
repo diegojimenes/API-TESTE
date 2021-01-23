@@ -1,5 +1,6 @@
 import express from 'express'
 import mongoose from 'mongoose'
+import routes from './routes.js'
 
 const app = express()
 app.use(express.json())
@@ -18,7 +19,7 @@ mongoose.connect(
 app.use('/', (req, res, next) => {
     console.log('chamada recebida')
     next()
-}, require("./routes"))
+}, routes)
 
 app.listen(port, host, () => {
     console.log(`Example app listening at http://localhost:${port}`)
