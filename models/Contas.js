@@ -2,12 +2,14 @@ import mongoose from 'mongoose'
 import mongoosePaginate from 'mongoose-paginate'
 
 const conta = new mongoose.Schema({
-    nome: { type: String, required: false },
-    valorOriginal: { type: String, required: false },
-    dataDeVencimento: { type: String, required: false },
-    dataDePagamento: { type: String, required: false },
+    nome: { type: String, required: true },
+    valorOriginal: { type: Number, required: true },
+    valorCorrigido: { type: Number, required: true },
+    dataDeVencimento: { type: String, required: true },
+    dataDePagamento: { type: String, required: true },
+    quantidadeDeDiasDeAtraso: { type: Number, required: true }
 })
 
 conta.plugin(mongoosePaginate);
 
-mongoose.model('conta', conta);
+export default mongoose.model('conta', conta);
