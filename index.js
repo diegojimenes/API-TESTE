@@ -6,9 +6,9 @@ const app = express()
 app.use(express.json())
 const port = 3000
 const host = "0.0.0.0"
-
+const idContainer = 'e0d671f20e76'
 mongoose.connect(
-    'mongodb://diego:senha@e0d671f20e76:27017/APITESTE?authSource=admin',
+    `mongodb://diego:senha@${idContainer}:27017/APITESTE?authSource=admin`,
     { useNewUrlParser: true, useUnifiedTopology: true }
 ).then(() => {
     console.log('conectado no mongo com sucesso')
