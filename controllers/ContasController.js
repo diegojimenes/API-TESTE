@@ -14,9 +14,13 @@ export default {
     },
     async store(req, res) {
         try {
-            return montarNota(req.body).then((dados) => {
-                // const retorno = await conta.create(dados);
-                return res.json(dados)
+            return montarNota(req.body).then(async (dados) => {
+                try {
+                    await conta.create(dados);
+                    return res.json(dados)
+                } catch (err) {
+                    res.json(err)
+                }
             })
         } catch (err) {
             return res.json(err)
