@@ -11,11 +11,19 @@ services:
       MONGO_INITDB_DATABASE: APITESTE
       MONGO_INITDB_ROOT_USERNAME: diego
       MONGO_INITDB_ROOT_PASSWORD: senha
-  app:
+  back:
     build: .
     depends_on: [db]
     command: npm start
     ports: 
-      - "3000:3000"
+      - "3001:3001"
     volumes:
       - .:/usr/app
+  client:
+    build: ./Client
+    depends_on: [back]
+    command: npm start
+    ports: 
+      - "3000:3000"
+    volumes:
+      - ./Client:/usr/app

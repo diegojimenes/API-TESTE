@@ -15,6 +15,7 @@ export default {
     async store(req, res) {
         try {
             return montarNota(req.body).then(async (dados) => {
+                console.log(dados)
                 try {
                     await conta.create(dados);
                     return res.json(dados)

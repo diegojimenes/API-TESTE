@@ -4,9 +4,9 @@ import routes from './routes.js'
 
 const app = express()
 app.use(express.json())
-const port = 3000
+const port = 3001
 const host = "0.0.0.0"
-const idContainer = 'e0d671f20e76'
+const idContainer = '9cc359fb406b'
 mongoose.connect(
     `mongodb://diego:senha@${idContainer}:27017/APITESTE?authSource=admin`,
     { useNewUrlParser: true, useUnifiedTopology: true }
