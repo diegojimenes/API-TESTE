@@ -25,7 +25,7 @@ const style = {
 }
 
 const Filtro = ({ setDataInicial, setDataFinal, callback, toogleModal, contas }) => {
-    return <div style={{ display: 'flex', justifyContent: contas.length != 0 ? 'flex-start' : 'center', alignItems: 'center', margin: 25, marginLeft: 0 }}>
+    return <div className="filtro" style={{ display: 'flex', justifyContent: contas.length != 0 ? 'flex-start' : 'center', alignItems: 'center', margin: 25, marginLeft: 0 }}>
         <div style={{ display: 'flex', flexDirection: 'column', marginRight: 10 }}>
             <label>Data Inicial</label>
             <input style={style.input} type="date" onChange={(e) => setDataInicial(e.target.value)} />
@@ -104,7 +104,7 @@ export default () => {
     const [dataDeVencimento, setVencimento] = useState('')
     const [dataDePagamento, setPagamento] = useState('')
     const [paginacao, setPagina] = useState({ paginaAtual: 1, total: 1 })
-    return <>
+    return <div style={{width: "100%"}}>
         <Modal showModal={showModal} onCancel={() => toogleModal(false)}
             callback={() => criarContas((v) => setContas(v), { nome, valorOriginal, dataDeVencimento, dataDePagamento }, (v) => setPagina(v))}
             props={{
@@ -139,5 +139,5 @@ export default () => {
                     {Paginador(paginacao, buscarContas, (v) => setPagina(v), (v) => setContas(v), { dataInicial, dataFinal })}
                 </section>
         }
-    </>
+    </div>
 }
