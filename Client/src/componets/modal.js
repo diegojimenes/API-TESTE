@@ -1,6 +1,6 @@
 const style = {
     input: {
-        height: 35, width: "100%", border: 'none', borderBottom: "1px solid #abf16c", marginBottom: 10
+        height: 35, width: "100%", border: 'none', borderBottom: "1px solid #00A1D7", marginBottom: 10
     },
     button: {
         borderRadius: 35,
@@ -26,8 +26,8 @@ export default ({ showModal, onCancel, callback, props }) => {
             <label>Data pagamento</label>
             <input style={style.input} type="date" onChange={(e) => props.setPagamento(e.target.value)} required />
             <div style={{ display: "flex", flexDirection: "row", justifyContent: "flex-end" }}>
-                <button style={{ ...style.button, backgroundColor: "#E53E34" }} onClick={(e) => { e.preventDefault(); onCancel() }}>Cancelar</button>
-                <button style={{ ...style.button, backgroundColor: "#ABF16C" }} onClick={callback}>Salvar</button>
+                <button style={{ ...style.button, backgroundColor: "#3B70A2" }} onClick={(e) => { e.preventDefault(); onCancel() }}>Cancelar</button>
+                <button style={{ ...style.button, backgroundColor: "#00A1D7" }} onClick={callback}>Salvar</button>
             </div>
         </form>
     </div> : <></>

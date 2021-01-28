@@ -9,7 +9,7 @@ import {
 export default function App() {
   return (
     <div>
-      <nav>
+      {/* <nav>
         <ul>
           <li>
             <Link to="/">Contas</Link>
@@ -18,7 +18,7 @@ export default function App() {
             <Link to="/regras">Regras</Link>
           </li>
         </ul>
-      </nav>
+      </nav> */}
 
       {/* A <Switch> looks through its children <Route>s and
             renders the first one that matches the current URL. */}

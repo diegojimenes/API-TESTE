@@ -5,7 +5,10 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  color: #666
 }
+
+button:focus {outline:0;}
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
@@ -19,13 +22,12 @@ table {
 }
 
 td, th {
-  border: 1px solid #dddddd;
   text-align: left;
   padding: 8px;
 }
 
 tr:nth-child(even) {
-  background-color: #dddddd;
+  background-color: #DEECF7;
 }
 
 .container {
@@ -44,4 +46,21 @@ nav ul{
 nav ul li{
   list-style: none;
   margin-right: 10px;
+}
+
+.paginador {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin: 20px;
+}
+
+.paginador button{
+  width: 30px;
+  height: 30px;
+  font-size: 15px;
+  text-align: center;
+  border: none;
+  background-color: #00A1D7;
+  color: #fff
 }
