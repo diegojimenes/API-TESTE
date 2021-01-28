@@ -52,25 +52,34 @@ const renderizarContas = (dados) => {
 
 const Filtro = ({ setDataInicial, setDataFinal, callback }) => {
     return <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', margin: 25 }}>
-        <input style={{ height: 35, width: 250, border: 'none' }} type="date" onChange={(e) => setDataInicial(e.target.value)} />
-        <input style={{ height: 35, width: 250, border: 'none' }} type="date" onChange={(e) => setDataFinal(e.target.value)} />
-        <button style={{ border: 'none', cursor: 'pointer', height: 35, paddingLeft: 25, paddingRight: 25 }} onClick={callback}>Filtrar</button>
+        <div style={{ display: 'flex', flexDirection: 'column' }}>
+            <label>Data Inicial</label>
+            <input style={{ height: 35, width: 250, border: 'none' }} type="date" onChange={(e) => setDataInicial(e.target.value)} />
+        </div>
+        <div style={{ display: 'flex', flexDirection: 'column' }}>
+            <label>Data Final</label>
+            <input style={{ height: 35, width: 250, border: 'none' }} type="date" onChange={(e) => setDataFinal(e.target.value)} />
+        </div>
+        <button style={{ alignSelf: 'flex-end', border: 'none', borderRadius: 35, cursor: 'pointer', height: 35, paddingLeft: 25, paddingRight: 25, marginLeft: 10 }} onClick={callback}>Filtrar Contas</button>
     </div>
 }
 
-const buscarContas = async (setContas, args) => {
-    const filtro = {}
-    if (args) {
+const buscarContas = async (setContas, filtros) => {
+    let filtro = {}
+    if (filtros != undefined) {
+        console.log(filtros)
         filtro = {
-            "dataDeVencimento": args.dataInicial
+            "dataInicial": filtros.dataInicial,
+            "dataFinal": filtros.dataFinal
         }
     }
-    const resultado = await axios.post('http://api-teste_back:3001/listar-contas', filtro)
-    setContas(resultado)
+    const resultado = await axios.post('http://localhost:3001/listar-contas', filtro)
+    console.log('resultado', resultado)
+    setContas(resultado.data.docs)
 }
 
 const criarContas = async (setContas, args) => {
-    await axios.post('http://api-teste_back:3001/cadastrar-conta', args)
+    await axios.post('http://localhost:3001/cadastrar-conta', args)
     buscarContas(setContas)
 }
 
@@ -86,6 +95,7 @@ export default () => {
     useEffect(() => {
         buscarContas((v) => setContas(v))
     }, [])
+    console.log('aaaaaaa', { nome, valorOriginal, dataDeVencimento, dataDePagamento })
     return <>
         <Modal showModal={showModal} onCancel={() => toogleModal(false)}
             callback={() => criarContas((v) => setContas(v), { nome, valorOriginal, dataDeVencimento, dataDePagamento })}
@@ -97,7 +107,7 @@ export default () => {
             }} />
         <section className="container">
             <div style={{ display: "flex", flexDirection: 'row', justifyContent: 'flex-end' }}>
-                <button style={{ border: 'none', cursor: 'pointer', height: 35, paddingLeft: 25, paddingRight: 25 }} onClick={() => toogleModal(true)}>Adicionar conta</button>
+                <button style={{ border: 'none', borderRadius: 35, cursor: 'pointer', height: 35, paddingLeft: 25, paddingRight: 25 }} onClick={() => toogleModal(true)}>Adicionar conta</button>
             </div>
             <h2 style={{ textAlign: 'center' }}>Lista de Contas</h2>
             <Filtro setDataInicial={(v) => setDataInicial(v)} setDataFinal={(v) => setDataFinal(v)} callback={() => buscarContas((v) => setContas(v), { dataInicial, dataFinal })} />

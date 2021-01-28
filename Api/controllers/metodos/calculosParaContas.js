@@ -28,7 +28,7 @@ export default (dados, regrasDefault = Regras) => buscarRegras(regrasDefault).th
         let dataDeVencimento = moment(dados.dataDeVencimento)
         let dataDePagamento = moment(dados.dataDePagamento)
         let quantidadeDeDiasDeAtraso = dataDePagamento.diff(dataDeVencimento, 'days')
-        let calculoDaMulta = calcularMulta(dados.valorOriginal, quantidadeDeDiasDeAtraso, regras[0].regra)
+        let calculoDaMulta = calcularMulta(parseFloat(dados.valorOriginal), quantidadeDeDiasDeAtraso, regras[0].regra)
         let valorCorrigido = calculoDaMulta.valor
         return {
             ...conta,

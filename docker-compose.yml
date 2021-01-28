@@ -12,13 +12,13 @@ services:
       MONGO_INITDB_ROOT_USERNAME: diego
       MONGO_INITDB_ROOT_PASSWORD: senha
   back:
-    build: .
+    build: ./Api
     depends_on: [db]
     command: npm start
     ports: 
       - "3001:3001"
     volumes:
-      - .:/usr/app
+      - ./Api:/usr/app
   client:
     build: ./Client
     depends_on: [back]

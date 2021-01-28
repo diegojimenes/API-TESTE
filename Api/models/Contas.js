@@ -7,7 +7,9 @@ const conta = new mongoose.Schema({
     valorCorrigido: { type: Number, required: true },
     dataDeVencimento: { type: String, required: true },
     dataDePagamento: { type: String, required: true },
-    quantidadeDeDiasDeAtraso: { type: Number, required: true }
+    quantidadeDeDiasDeAtraso: { type: Number, required: true },
+    multa: { type: Number, required: true },
+    juros: { type: Number, required: true }
 })
 
 conta.plugin(mongoosePaginate);
