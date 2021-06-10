@@ -1,3 +1,3 @@
 export default () => {
-    return <div>cu</div>
+    return <div>0000</div>
 }
